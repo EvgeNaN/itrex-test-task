@@ -8,7 +8,7 @@ class KeyValue {
   constructor() {
     this.store = {};
 
-    setInterval(this.clean.bind(this), CLEAN_INTERVAL);
+    this.cleanInterval = setInterval(this.clean.bind(this), CLEAN_INTERVAL);
   }
 
   clean() {
@@ -53,6 +53,12 @@ class KeyValue {
     const item = this.store[key];
     
     return !!item && (!item.expiresAt || item.expiresAt > this.now);
+  }
+
+  destroy() {
+    clearInterval(this.cleanInterval);
+
+    this.store = null;
   }
 }
 

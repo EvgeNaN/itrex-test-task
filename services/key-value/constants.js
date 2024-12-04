@@ -11,5 +11,6 @@ const ERRORS = {
 
 module.exports = {
   NO_TTL,
+  CLEAN_INTERVAL,
   ERRORS,
 };
