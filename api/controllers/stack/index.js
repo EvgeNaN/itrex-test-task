@@ -27,7 +27,7 @@ module.exports = () => {
     try {
       stack.push(req.body.value);
 
-      res.json({
+      res.status(201).json({
         success: true,
       });
     } catch (e) {

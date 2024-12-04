@@ -6,7 +6,7 @@ class Stack {
 
     this.maxSize = maxSize;
     
-    this.list = [];
+    this.store = [];
   }
 
   push(value) {
@@ -14,15 +14,15 @@ class Stack {
       throw ERRORS.VALUE_REQUIRED();
     }
 
-    if (this.maxSize && this.list.length === this.maxSize) {
+    if (this.maxSize && this.store.length === this.maxSize) {
       throw ERRORS.OVERFLOW();
     }
 
-    this.list.push(value);
+    this.store.push(value);
   }
 
   pop() {
-    return this.list.pop();
+    return this.store.pop();
   }
 }
 
