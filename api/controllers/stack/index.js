@@ -2,7 +2,7 @@ const express = require('express');
 
 const Stack = require('../../../services/stack');
 
-const { ERRORS } = require('./constants');
+const validators = require('../../mw/validators/stack');
 
 const router = express();
 
@@ -19,11 +19,7 @@ module.exports = () => {
     }
   });
 
-  router.post('/', (req, res, next) => {
-    if (req.body.value === void 0) {
-      return next(ERRORS.VALUE_REQUIRED());
-    }
-
+  router.post('/', validators.create, (req, res, next) => {
     try {
       stack.push(req.body.value);
 
