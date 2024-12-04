@@ -11,9 +11,7 @@ const stack = new Stack();
 module.exports = () => {
   router.get('/', (req, res, next) => {
     try {
-      res.json({
-        value: stack.pop(),
-      });
+      res.json(stack.pop());
     } catch (e) {
       next(e);
     }

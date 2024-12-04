@@ -17,9 +17,7 @@ module.exports = () => {
         return next(ERRORS.NOT_FOUND());
       }
       
-      return res.json({
-        value: keyValue.get(req.query.key),
-      });
+      return res.json(keyValue.get(req.query.key));
     } catch (e) {
       next(e);
     }

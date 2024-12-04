@@ -1,5 +1,5 @@
-const HttpError = require('../../../models/errors/http');
-
-module.exports = (req, res, next) => {
-  next(new HttpError(404, 'Not Found'));
+module.exports = (req, res) => {
+  res.status(404).json({
+    message: 'Endpoint Not Found',
+  });
 };

@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "ec26229d-0d43-44db-8512-9d484cb4eee9",
+		"name": "ITRex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "984262"
+	},
+	"item": [
+		{
+			"name": "Stack",
+			"item": [
+				{
+					"name": "Pop",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE}}/stack",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"stack"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Push",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": 91\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/stack",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"stack"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "KeyValue",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE}}/key-value?key=key1",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"key-value"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "key1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"key1\",\n    \"value\": \"a\",\n    \"ttl\": 10000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE}}/key-value",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"key-value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE}}/key-value?key=key1",
+							"host": [
+								"{{BASE}}"
+							],
+							"path": [
+								"key-value"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "key1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE",
+			"value": "localhost:3333",
+			"type": "string"
+		}
+	]
+}

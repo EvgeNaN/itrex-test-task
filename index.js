@@ -9,8 +9,8 @@ app.use(express.json());
 
 require('./api/controllers')({ app });
 
-app.use(require('./api/mw/error'));
 app.use(require('./api/mw/not-found'));
+app.use(require('./api/mw/error'));
 
 app.listen(process.env.PORT, () => {
   console.dir(`> Server is running at port ${process.env.PORT}`);
