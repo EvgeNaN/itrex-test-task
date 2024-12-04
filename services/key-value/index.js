@@ -11,6 +11,16 @@ class KeyValue {
     setInterval(this.clean.bind(this), CLEAN_INTERVAL);
   }
 
+  clean() {
+    Object.keys(this.store).forEach(key => {
+      if (this.isExists(key)) {
+        return;
+      }
+
+      this.delete(key);
+    });
+  }
+
   add(key, value, ttl = NO_TTL) {
     if (typeof key !== 'string' || key.length === 0) {
       throw ERRORS.KEY_INVALID();
@@ -18,10 +28,6 @@ class KeyValue {
     
     if (ttl < 0 || !Number.isInteger(ttl)) {
       throw ERRORS.TTL_INVALID();
-    }
-
-    if (this.isExists(key)) {
-      throw ERRORS.KEY_EXISTS();
     }
 
     const item = {
@@ -47,16 +53,6 @@ class KeyValue {
     const item = this.store[key];
     
     return !!item && (!item.expiresAt || item.expiresAt > this.now);
-  }
-
-  clean() {
-    Object.keys(this.store).forEach(key => {
-      if (this.isExists(key)) {
-        return;
-      }
-
-      this.delete(key);
-    });
   }
 }
 
