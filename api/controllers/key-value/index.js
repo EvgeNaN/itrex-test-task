@@ -12,41 +12,27 @@ const keyValue = new KeyValue();
 
 module.exports = () => {
   router.get('/', validators.get, (req, res, next) => {
-    try {
-      if (!keyValue.isExists(req.query.key)) {
-        return next(ERRORS.NOT_FOUND());
-      }
+    if (!keyValue.isExists(req.query.key)) {
+      return next(ERRORS.NOT_FOUND());
+    }
       
-      return res.json(keyValue.get(req.query.key));
-    } catch (e) {
-      next(e);
-    }
+    res.json(keyValue.get(req.query.key));
   });
 
-  router.post('/', validators.create, (req, res, next) => {
-    try {
-      const { key, value, ttl } = req.body;
+  router.post('/', validators.create, (req, res) => {
+    const { key, value, ttl } = req.body;
 
-      keyValue.add(key, value, ttl);
+    keyValue.add(key, value, ttl);
 
-      return res.status(201).json({
-        success: true,
-      });
-    } catch (e) {
-      next(e);
-    }
+    res.status(201).json({
+      success: true,
+    });
   });
 
-  router.delete('/', validators.delete, (req, res, next) => {
-    try {
-      keyValue.delete(req.query.key);
+  router.delete('/', validators.delete, (req, res) => {
+    keyValue.delete(req.query.key);
 
-      return res.status(204).json({
-        success: true,
-      });
-    } catch (e) {
-      next(e);
-    }
+    res.status(204).send();
   });
   
   return router;

@@ -1,6 +1,6 @@
-const { ERRORS } = require('./constants');
+const { ERRORS } = require('../services/stack/constants');
 
-const Stack = require('./index');
+const Stack = require('../services/stack');
 
 describe('Stack tests', () => {
   let stack;

@@ -1,6 +1,6 @@
-const { ERRORS } = require('./constants');
+const { ERRORS } = require('../services/key-value/constants');
 
-const KeyValue = require('./index');
+const KeyValue = require('../services/key-value');
 
 const sleep = async ms => {
   return new Promise(resolve => {
